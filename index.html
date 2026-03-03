@@ -217,6 +217,13 @@ section{min-height:100vh;padding:120px 0 80px}
   transition:all .25s ease;
 }
 .btn-secondary:hover{background:var(--surface);transform:translateY(-2px);border-color:rgba(255,255,255,.2)}
+.btn-resume{
+  padding:12px 28px;font-family:'Syne',sans-serif;font-size:.9rem;font-weight:600;
+  background:transparent;border:1px solid rgba(34,211,238,.4);
+  color:var(--accent3);border-radius:12px;text-decoration:none;
+  transition:all .25s ease;
+}
+.btn-resume:hover{background:rgba(34,211,238,.08);border-color:var(--accent3);transform:translateY(-2px);box-shadow:0 0 24px rgba(34,211,238,.2)}
 .hero-socials{display:flex;gap:12px}
 .social-icon{
   width:40px;height:40px;border-radius:10px;
@@ -602,6 +609,104 @@ footer{
   background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text3);
 }
 
+/* ===== LEETCODE SECTION ===== */
+#leetcode{background:var(--bg2)}
+.lc-wrap{
+  display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:start;
+  background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius2);
+  padding:44px;box-shadow:0 0 60px var(--glow);max-width:940px;margin:0 auto;
+}
+/* Donut */
+.lc-donut-container{position:relative;width:160px;height:160px;margin:0 auto 28px}
+.lc-donut{display:block}
+.lc-arc-easy,.lc-arc-med,.lc-arc-hard{stroke-dasharray:0 452.39}
+.lc-wrap.visible .lc-arc-easy{animation:lc-easy 1.4s cubic-bezier(.4,0,.2,1) forwards .2s}
+.lc-wrap.visible .lc-arc-med{animation:lc-med 1.4s cubic-bezier(.4,0,.2,1) forwards .45s}
+.lc-wrap.visible .lc-arc-hard{animation:lc-hard 1.4s cubic-bezier(.4,0,.2,1) forwards .65s}
+@keyframes lc-easy{to{stroke-dasharray:259.05 452.39}}
+@keyframes lc-med{to{stroke-dasharray:184.44 452.39}}
+@keyframes lc-hard{to{stroke-dasharray:8.87 452.39}}
+.lc-donut-center{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+.lc-donut-num{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--text);line-height:1}
+.lc-donut-sub{font-size:.72rem;color:var(--text3);font-weight:500;margin-top:4px}
+/* Diff bars */
+.lc-breakdown{display:flex;flex-direction:column;gap:10px}
+.lc-diff-row{display:grid;grid-template-columns:8px 46px 1fr 70px;align-items:center;gap:8px}
+.lc-diff-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.lc-diff-name{font-size:.78rem;color:var(--text2);font-weight:500}
+.lc-bar-track{height:6px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden}
+.lc-bar{height:100%;border-radius:4px;transform:scaleX(0);transform-origin:left}
+.lc-wrap.visible .lc-bar{animation:lcBar 1s ease forwards .8s}
+@keyframes lcBar{to{transform:scaleX(1)}}
+.lc-diff-count{font-size:.78rem;font-weight:700;color:var(--text);text-align:right}
+.lc-diff-count span{color:var(--text3);font-weight:400}
+/* Stat grid */
+.lc-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.lc-stat{
+  background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 10px;text-align:center;transition:border-color .25s,background .25s;
+}
+.lc-stat:hover{border-color:rgba(124,107,255,.3);background:rgba(124,107,255,.06)}
+.lc-stat-val{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:3px}
+.lc-stat-key{font-size:.65rem;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.4px}
+/* Profile button */
+.lc-profile-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:12px;
+  text-decoration:none;font-weight:600;font-size:.88rem;font-family:'Syne',sans-serif;
+  background:rgba(255,190,50,.07);border:1px solid rgba(255,190,50,.28);color:#fbbf24;
+  transition:all .25s ease;
+}
+.lc-profile-btn:hover{background:rgba(255,190,50,.13);border-color:rgba(255,190,50,.55);transform:translateY(-2px);box-shadow:0 0 24px rgba(255,190,50,.15)}
+/* Heatmap */
+.lc-heatmap-wrap{
+  grid-column:1/-1;padding-top:28px;border-top:1px solid var(--border);margin-top:4px;
+}
+.lc-hm-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:10px;font-size:.78rem;color:var(--text2);flex-wrap:wrap;gap:4px;
+}
+.lc-hm-header strong{color:var(--text);font-weight:600}
+.lc-hm-months{
+  display:flex;gap:0;margin-bottom:5px;padding-left:0;
+  font-size:.65rem;color:var(--text3);
+}
+.lc-hm-month-label{flex:1;min-width:0;white-space:nowrap;overflow:hidden}
+#lcHeatmap{display:flex;gap:3px;overflow:hidden}
+.lc-hm-week{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.lc-hm-cell{
+  aspect-ratio:1;border-radius:2px;min-width:0;
+  transition:transform .1s ease, opacity .1s ease;
+  cursor:default;
+}
+.lc-hm-cell[data-level]:hover{transform:scale(1.6);opacity:.9;z-index:1;position:relative}
+/* Responsive */
+@media(max-width:860px){
+  .lc-wrap{grid-template-columns:1fr;padding:28px 20px;gap:28px}
+  .lc-donut-container{width:140px;height:140px}
+  .lc-stat-grid{grid-template-columns:repeat(2,1fr)}
+  .lc-hm-months{display:none}
+}
+
+/* ===== RESUME SECTION ===== */
+#resume{background:var(--bg2)}
+.resume-wrap{max-width:860px;margin:0 auto}
+.resume-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.resume-preview{
+  border-radius:var(--radius2);overflow:hidden;
+  border:1px solid var(--border2);
+  background:var(--surface);
+  box-shadow:0 0 60px rgba(124,107,255,.08);
+}
+.resume-preview iframe{
+  display:block;width:100%;height:780px;border:none;
+}
+@media(max-width:768px){
+  .resume-preview iframe{height:480px}
+}
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
   .hero-inner{grid-template-columns:1fr;text-align:center;padding:140px 24px 80px}
@@ -658,10 +763,12 @@ footer{
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#leetcode">LeetCode</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#awards">Awards</a></li>
     <li><a href="#participations">Events</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#resume">Resume</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a class="nav-cta" href="mailto:anilnunnagopula15@gmail.com">Hire Me</a>
@@ -675,10 +782,12 @@ footer{
     <li><a href="#about" onclick="toggleMobile()">About</a></li>
     <li><a href="#skills" onclick="toggleMobile()">Skills</a></li>
     <li><a href="#projects" onclick="toggleMobile()">Projects</a></li>
+    <li><a href="#leetcode" onclick="toggleMobile()">LeetCode</a></li>
     <li><a href="#experience" onclick="toggleMobile()">Experience</a></li>
     <li><a href="#awards" onclick="toggleMobile()">Awards</a></li>
     <li><a href="#participations" onclick="toggleMobile()">Events</a></li>
     <li><a href="#services" onclick="toggleMobile()">Services</a></li>
+    <li><a href="#resume" onclick="toggleMobile()">Resume</a></li>
     <li><a href="#contact" onclick="toggleMobile()">Contact</a></li>
   </ul>
 </div>
@@ -700,6 +809,7 @@ footer{
       </p>
       <div class="hero-actions">
         <a class="btn-primary" href="#projects">View Projects</a>
+        <a class="btn-resume" href="#resume">Resume ↓</a>
         <a class="btn-secondary" href="mailto:anilnunnagopula15@gmail.com">Hire Me →</a>
       </div>
       <div class="hero-socials">
@@ -755,18 +865,23 @@ footer{
       </div>
       <div class="education-timeline stagger">
         <div class="edu-card">
-          <div class="edu-year">2022 — 2026</div>
-          <div class="edu-degree">B.Tech Civil Eng. + AI-ML Minor</div>
+          <div class="edu-year">2022 — 2026 | CGPA : 9.2</div>
+          <div class="edu-degree">B.Tech Civil Engineering</div>
           <div class="edu-school">CVR College of Engineering, Hyderabad</div>
         </div>
         <div class="edu-card">
-          <div class="edu-year">2020 — 2022</div>
+          <div class="edu-year">2024 — 2026  | CGPA : 8.6</div>
+          <div class="edu-degree">AI-ML Minor Degree</div>
+          <div class="edu-school">CVR College of Engineering, Hyderabad</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-year">2020 — 2022  | Percentage : 96.3 %</div>
           <div class="edu-degree">Intermediate — MPC</div>
           <div class="edu-school">New Sri Chaitanya Junior College, Hyderabad</div>
         </div>
         <div class="edu-card">
-          <div class="edu-year">Until 2020</div>
-          <div class="edu-degree">High School (SSC)</div>
+          <div class="edu-year">Until 2020 | CGPA : 10 </div>
+          <div class="edu-degree">High School (SSC) | NURSERY to X</div>
           <div class="edu-school">Matilda High School, Kondamallepally, Nalgonda</div>
         </div>
       </div>
@@ -876,6 +991,113 @@ footer{
           <span class="skill-tag">Hindi</span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LEETCODE ===== -->
+<section id="leetcode">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Competitive Programming</div>
+      <h2 class="section-title">LeetCode Stats</h2>
+      <p class="section-subtitle">510+ problems solved · Consistent DSA practice since 2024</p>
+    </div>
+
+    <div class="lc-wrap fade-up">
+
+      <!-- Left: Donut + Breakdown -->
+      <div class="lc-left">
+        <div class="lc-donut-container">
+          <svg class="lc-donut" viewBox="0 0 160 160" width="160" height="160">
+            <!-- Track -->
+            <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="14"/>
+            <!-- Easy (green) — 292/510 of arc -->
+            <circle class="lc-arc-easy" cx="80" cy="80" r="72" fill="none" stroke="#4ade80" stroke-width="14" stroke-linecap="butt" transform="rotate(-90 80 80)"/>
+            <!-- Med (yellow) — 208/510, offset after Easy -->
+            <circle class="lc-arc-med" cx="80" cy="80" r="72" fill="none" stroke="#fbbf24" stroke-width="14" stroke-linecap="butt" stroke-dashoffset="-261.05" transform="rotate(-90 80 80)"/>
+            <!-- Hard (red) — 10/510, offset after Med -->
+            <circle class="lc-arc-hard" cx="80" cy="80" r="72" fill="none" stroke="#f87171" stroke-width="14" stroke-linecap="butt" stroke-dashoffset="-447.49" transform="rotate(-90 80 80)"/>
+          </svg>
+          <div class="lc-donut-center">
+            <div class="lc-donut-num">510+</div>
+            <div class="lc-donut-sub">Solved</div>
+          </div>
+        </div>
+
+        <div class="lc-breakdown">
+          <div class="lc-diff-row">
+            <span class="lc-diff-dot" style="background:#4ade80"></span>
+            <span class="lc-diff-name">Easy</span>
+            <div class="lc-bar-track"><div class="lc-bar" style="width:31.4%;background:#4ade80"></div></div>
+            <span class="lc-diff-count">292<span>/929</span></span>
+          </div>
+          <div class="lc-diff-row">
+            <span class="lc-diff-dot" style="background:#fbbf24"></span>
+            <span class="lc-diff-name">Med</span>
+            <div class="lc-bar-track"><div class="lc-bar" style="width:10.3%;background:#fbbf24"></div></div>
+            <span class="lc-diff-count">208<span>/2019</span></span>
+          </div>
+          <div class="lc-diff-row">
+            <span class="lc-diff-dot" style="background:#f87171"></span>
+            <span class="lc-diff-name">Hard</span>
+            <div class="lc-bar-track"><div class="lc-bar" style="width:1.1%;background:#f87171"></div></div>
+            <span class="lc-diff-count">10<span>/912</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Stats grid + CTA -->
+      <div class="lc-right">
+        <div class="lc-stat-grid">
+          <div class="lc-stat">
+            <div class="lc-stat-val" style="color:#4ade80">510+</div>
+            <div class="lc-stat-key">Problems Solved</div>
+          </div>
+          <div class="lc-stat">
+            <div class="lc-stat-val" style="color:var(--accent3)">1,631</div>
+            <div class="lc-stat-key">Contest Rating</div>
+          </div>
+          <div class="lc-stat">
+            <div class="lc-stat-val" style="color:var(--accent2)">Top 19%</div>
+            <div class="lc-stat-key">Worldwide</div>
+          </div>
+          <div class="lc-stat">
+            <div class="lc-stat-val">34</div>
+            <div class="lc-stat-key">Contests</div>
+          </div>
+          <div class="lc-stat">
+            <div class="lc-stat-val">610</div>
+            <div class="lc-stat-key">Submissions '25</div>
+          </div>
+          <div class="lc-stat">
+            <div class="lc-stat-val">190</div>
+            <div class="lc-stat-key">Active Days</div>
+          </div>
+          <div class="lc-stat">
+            <div class="lc-stat-val">🔥 23</div>
+            <div class="lc-stat-key">Max Streak</div>
+          </div>
+          <div class="lc-stat">
+            <div class="lc-stat-val" style="color:#fbbf24">3</div>
+            <div class="lc-stat-key">Badges</div>
+          </div>
+        </div>
+        <a class="lc-profile-btn" href="https://leetcode.com/u/btech2k26/" target="_blank" rel="noopener">
+          <i class="fa-solid fa-code"></i> View LeetCode Profile ↗
+        </a>
+      </div>
+
+      <!-- Heatmap — spans full width -->
+      <div class="lc-heatmap-wrap">
+        <div class="lc-hm-header">
+          <span><strong>610</strong> submissions in 2025</span>
+          <span>Total active days: <strong>190</strong> &nbsp;·&nbsp; Max streak: <strong>23</strong></span>
+        </div>
+        <div class="lc-hm-months" id="lcMonths"></div>
+        <div id="lcHeatmap"></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1345,6 +1567,26 @@ footer{
   </div>
 </section>
 
+<!-- ===== RESUME ===== -->
+<section id="resume">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Resume</div>
+      <h2 class="section-title">My Resume</h2>
+      <p class="section-subtitle">ATS-optimized — view inline or grab a copy</p>
+    </div>
+    <div class="resume-wrap fade-up">
+      <div class="resume-actions">
+        <a class="btn-primary" href="AnilNunnagopula_ATS.pdf" target="_blank" rel="noopener">View Resume ↗</a>
+        <a class="btn-resume" href="AnilNunnagopula_ATS.pdf" download="AnilNunnagopula_Resume.pdf">Download PDF ↓</a>
+      </div>
+      <div class="resume-preview">
+        <iframe src="AnilNunnagopula_ATS.pdf" title="Anil Nunnagopula Resume" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== CONTACT ===== -->
 <section id="contact">
   <div class="container">
@@ -1541,6 +1783,76 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
+
+// ===== LEETCODE HEATMAP =====
+(function(){
+  const grid = document.getElementById('lcHeatmap');
+  const monthsEl = document.getElementById('lcMonths');
+  if (!grid) return;
+
+  // Seeded RNG for consistent results
+  let s = 20250101;
+  const rng = () => { s = Math.imul(s ^ s >>> 15, s | 1) ^ Math.imul(s ^ s >>> 7, s | 61); return ((s ^ s >>> 14) >>> 0) / 4294967296; };
+
+  // Monthly activity rates matching your actual pattern (Jan-Dec 2025)
+  const rates  = [0.85, 0.90, 0.85, 0.55, 0.30, 0.75, 0.15, 0.45, 0.45, 0.25, 0.45, 0.25];
+  const mDays  = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const mNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const colors = ['rgba(255,255,255,0.04)','#1a4731','#2d6a4f','#40916c','#52b788'];
+
+  // Build 365-day activity array
+  const activity = [];
+  for (let m = 0; m < 12; m++) {
+    for (let d = 0; d < mDays[m]; d++) {
+      const r = rng();
+      if (r < rates[m]) {
+        const r2 = rng();
+        activity.push(r2 < 0.38 ? 1 : r2 < 0.68 ? 2 : r2 < 0.88 ? 3 : 4);
+      } else { rng(); activity.push(0); }
+    }
+  }
+
+  // Jan 1, 2025 = Wednesday (index 3, Sun=0)
+  const startOffset = 3;
+  const totalWeeks = Math.ceil((365 + startOffset) / 7);
+
+  // Month label positions
+  let dayCount = 0, lastM = -1;
+  const mStartWeek = {};
+  for (let m = 0; m < 12; m++) {
+    mStartWeek[m] = Math.floor((dayCount + startOffset) / 7);
+    dayCount += mDays[m];
+  }
+
+  // Render month labels
+  for (let w = 0; w < totalWeeks; w++) {
+    const span = document.createElement('span');
+    span.className = 'lc-hm-month-label';
+    const month = Object.entries(mStartWeek).find(([, sw]) => sw === w);
+    span.textContent = month ? mNames[+month[0]] : '';
+    monthsEl.appendChild(span);
+  }
+
+  // Render week columns
+  for (let w = 0; w < totalWeeks; w++) {
+    const col = document.createElement('div');
+    col.className = 'lc-hm-week';
+    for (let d = 0; d < 7; d++) {
+      const idx = w * 7 + d - startOffset;
+      const cell = document.createElement('div');
+      cell.className = 'lc-hm-cell';
+      if (idx >= 0 && idx < 365) {
+        const lvl = activity[idx];
+        cell.style.background = colors[lvl];
+        if (lvl > 0) cell.setAttribute('data-level', lvl);
+      } else {
+        cell.style.background = 'transparent';
+      }
+      col.appendChild(cell);
+    }
+    grid.appendChild(col);
+  }
+})();
 
 // ===== MOBILE MENU =====
 function toggleMobile() {
